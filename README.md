@@ -4,6 +4,9 @@ This repository contains a preconfigured Haskell development environment, allowi
 
 The environment contains a guided Tic-Tac-Toe project, designed as a companion to the first part of EMURGO Academy's Haskell course.
 
+## Launch Environment
+[Launch in Gitpod](https://gitpod.io/#https://github.com/ian-emurgo/Tic-Hask-Toe)
+
 ## Create Your Environment
 
 1. Fork this repository
