@@ -5,14 +5,16 @@ module Sandbox where
 
 sum' = undefined
 
-concat' = undefined
+product' = undefined
 
-length' = undefined
+and' = undefined
+
+or' = undefined
 
 elem' = undefined
 
-zip' = undefined
+maximum' = undefined
 
-last' = undefined
+minimum' = undefined
 
-init' = undefined
+reverse' = undefined
