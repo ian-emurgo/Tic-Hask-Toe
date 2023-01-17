@@ -5,52 +5,59 @@ import Data.Char (toUpper)
 -- *** Assignment 1-1 *** --
 
 -- Q#01
-
-_SIZE_ = undefined
+_SIZE_ :: Int
+_SIZE_ = 3
 
 -- Q#02
-
-_DISPLAY_LOGO_ = undefined
+_DISPLAY_LOGO_ :: Bool
+_DISPLAY_LOGO_ = True
 
 -- Q#03
-
-convertRowIndex = undefined
+convertRowIndex :: Char -> Int
+convertRowIndex idx = fromEnum (toUpper idx) - 65
 
 -- Q#04
-
-_INVALID_MOVE_ = undefined
+_INVALID_MOVE_ :: Move
+_INVALID_MOVE_ = (-1, -1)
 
 -- Q#05
-
-_SEP_ = undefined
+_SEP_ :: [Char] -- String
+_SEP_ = "_|_"
 
 -- *** Assignment 1-2 *** --
 
 -- Q#06
-data Square
+data Square = X | O | E
+  deriving (Show, Eq)
 
 
 -- Q#07
-data GameState
-
+data GameState = XWon | OWon | Tie | InProgress
+  deriving (Show, Eq)
 
 -- Q#08
-
-
-
-
-
+type Player = Square
+type Row    = [Square]
+type Line   = [Square]
+type Board  = [Row]
+type Move   = (Int, Int)
 
 -- Q#09
+getFirstPlayer :: Bool -> Player
+getFirstPlayer b = if b then X else O
 
-getFirstPlayer = undefined
-
-
-getFirstPlayer_ = undefined
+getFirstPlayer_ :: Bool -> Player
+getFirstPlayer_ b
+  | b = X
+  | otherwise = O
 
 -- Q#10
-
-showGameState gs = undefined
+showGameState :: GameState -> String
+showGameState gs = case gs of
+    XWon -> "Player X wins!"
+    OWon -> "Player O wins!"
+    Tie  -> "Tie game!"
+    _    -> "Game is in progress"
 
 -- Q#11
 
