@@ -8,8 +8,11 @@ import Data.List (intercalate)
 -- *** Assignment 2-1 *** --
 
 -- Q#01
-
-promptPlayer = undefined
+promptPlayer :: Player -> String
+promptPlayer p = concat [ "Player "
+                        , showSquare p 
+                        , "'s turn: enter a row and column position (ex. A1)"
+                        ]
 
 -- Q#02
 

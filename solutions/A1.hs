@@ -60,10 +60,13 @@ showGameState gs = case gs of
     _    -> "Game is in progress"
 
 -- Q#11
-
-switchPlayer = undefined
-
+switchPlayer :: Player -> Player
+switchPlayer X = O
+switchPlayer O = X
+switchPlayer E = E
 
 -- Q#12
-
-showSquare = undefined
+showSquare :: Square -> String
+showSquare X = "X"
+showSquare O = "O"
+showSquare _ = "_"
