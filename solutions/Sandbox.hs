@@ -1,5 +1,7 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use foldr" #-}
+{-# HLINT ignore "Use sum" #-}
+{-# HLINT ignore "Use product" #-}
 
 module Sandbox where
 
@@ -34,8 +36,6 @@ minimum' []     = error "empty list"
 minimum' [x]    = x
 minimum' (x:xs) = min x (minimum' xs)
 
-reverse' = undefined
-
 
 -- reverse "star"
 --   reverse "tar" ++ "s"
@@ -43,3 +43,28 @@ reverse' = undefined
 --      ((reverse "r" ++ "a") ++ "t") ++ "s"
 --        (((reverse [] ++ "r") ++ "a") ++ "t") ++ "s"
 --             [] ++ "r" ++ "a" ++ "t" ++ "s" ==> "rats"
+
+-- sum/product
+-- and/or
+-- elem
+-- maximum/minimum
+-- reverse
+
+sum_ :: Num a => [a] -> a
+sum_ ns = foldr (+) 0 ns
+
+-- sum_ [1, 2, 3] => 1 + (foldr (+) 0 [2, 3])
+--                   1 + 2 + (foldr (+) 0 [3])
+--                   1 + 2 + 3 + (foldr (+) 0 [])
+--                   1 + 2 + 3 + 0 
+
+product_ :: Num a => [a] -> a
+product_ ns = foldr (*) 1 ns
+
+and_ :: [Bool] -> Bool
+and_ bs = foldr (&&) True bs
+
+or_ :: [Bool] -> Bool
+or_ bs = foldr (||) False bs
+
+-- foldl' imported from Data.List or Data.Foldable
