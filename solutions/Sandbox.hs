@@ -5,6 +5,8 @@
 
 module Sandbox where
 
+import Data.List (foldl') -- Data.Foldable
+
 sum' :: [Int] -> Int
 sum' []     = 0
 sum' (x:xs) = x + sum' xs
@@ -35,7 +37,6 @@ maximum' (x:xs) = max x (maximum' xs)
 minimum' []     = error "empty list"
 minimum' [x]    = x
 minimum' (x:xs) = min x (minimum' xs)
-
 
 -- reverse "star"
 --   reverse "tar" ++ "s"
@@ -68,3 +69,21 @@ or_ :: [Bool] -> Bool
 or_ bs = foldr (||) False bs
 
 -- foldl' imported from Data.List or Data.Foldable
+
+elem_ :: Eq a => a -> [a] -> Bool
+elem_ q xs = foldr (\x acc -> acc || x == q) False xs
+
+maximum_ :: Ord a => [a] -> a
+maximum_ []     = error "empty list"
+maximum_ (x:ys) = foldr max x ys
+
+minimum_ :: Ord a => [a] -> a
+minimum_ []     = error "empty list"
+minimum_ (x:ys) = foldr min x ys
+
+reverse_ :: [a] -> [a]
+-- reverse_ xs = foldr (\x acc -> acc ++ [x]) [] xs
+-- reverse_ xs = foldl (\acc x -> x : acc) [] xs
+reverse_ xs = foldl' (flip (:)) [] xs
+  -- [acc] : x << foldl
+  -- x : [acc] << foldr
