@@ -27,9 +27,11 @@ executable TicHaskToe
                     , A4
                     , A5
                     , Sandbox
+                    , State
 
     build-depends:
         base ^>=4.14.1.0
+      , mtl
       , random
 
     hs-source-dirs:   solutions

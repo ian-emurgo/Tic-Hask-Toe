@@ -68,5 +68,11 @@ stringToMove [x, y] = (convertRowIndex x, readDigit y)
 stringToMove _ = _INVALID_MOVE_
 
 -- Q#10
-
-replaceSquareInRow = undefined
+replaceSquareInRow :: Player -> Int -> Row -> Row
+replaceSquareInRow p j r = xs ++ ys'
+  where
+    (xs, ys) = splitAt j r
+    ys'
+      | null ys   = []
+      | j < 0     = ys
+      | otherwise = p : tail ys
