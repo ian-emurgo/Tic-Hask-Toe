@@ -87,3 +87,5 @@ reverse_ :: [a] -> [a]
 reverse_ xs = foldl' (flip (:)) [] xs
   -- [acc] : x << foldl
   -- x : [acc] << foldr
+
+foo = undefined
