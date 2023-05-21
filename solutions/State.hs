@@ -39,19 +39,6 @@ initialState gen = Game {
   , generator    = gen
   }
 
-updateGame :: Game -> Game
-updateGame (Game ap _ b gen) = Game
-  { activePlayer = switchPlayer ap
-  , status       = stat
-  , board        = b'
-  , generator    = gen'
-  }
-  where
-    opens      = getOpenMoves b
-    (i, gen')  = randomR (0, length opens - 1) gen
-    move       = opens !! i
-    (stat, b') = playMove ap b move
-
 -- game loop
 playGame :: State Game ()
 playGame = do
@@ -70,6 +57,19 @@ playGame = do
   when (stat == InProgress) playGame
 
 -- alternative version:
+updateGame :: Game -> Game
+updateGame (Game ap _ b gen) = Game
+  { activePlayer = switchPlayer ap
+  , status       = stat
+  , board        = b'
+  , generator    = gen'
+  }
+  where
+    opens      = getOpenMoves b
+    (i, gen')  = randomR (0, length opens - 1) gen
+    move       = opens !! i
+    (stat, b') = playMove ap b move
+
 playGame' :: State Game ()
 playGame' = do
   modify updateGame
